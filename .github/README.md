@@ -1,16 +1,28 @@
-# Caelestia Shell - Fedora 43 Setup
+# Caelestia Shell - Fedora 43 Attempt (⚠️ BROKEN)
 
-Build and installation guide for the Caelestia desktop shell on Fedora 43.
+**STATUS: EXPERIMENTAL - NOT WORKING**
+
+Attempt to build the Caelestia desktop shell (designed for Arch Linux) on Fedora 43. Build completes, but **the UI is broken** when running.
 
 ## What is this?
 
-[Caelestia](https://github.com/caelestia-dots/shell) is a beautiful, animated desktop environment built with Quickshell (Qt6/QML) for Hyprland. This repo provides Fedora-specific instructions and automation since Caelestia isn't packaged for Fedora yet.
+[Caelestia](https://github.com/caelestia-dots/shell) is a beautiful, animated desktop environment built with Quickshell (Qt6/QML) for Hyprland. **It was designed for Arch Linux.**
 
-**Credit**: All UI/shell code belongs to the [Caelestia project](https://github.com/caelestia-dots). This repo just makes it easy to build on Fedora.
+This repo documents my attempt to port it to Fedora 43. The build process succeeds, but the shell has severe UI issues - rendering is broken, features don't work correctly, and the experience is unusable.
+
+**Credit**: All UI/shell code belongs to the [Caelestia project](https://github.com/caelestia-dots) by [@soramame](https://github.com/caelestia-dots). This is purely a Fedora porting attempt.
+
+## Current Status
+
+❌ **UI broken** - Components don't render properly  
+❌ **Inconsistent behavior** - Some features work, others don't  
+❌ **Visual glitches** - Layout issues, styling problems  
+
+**Looking for help!** If you know how to debug Qt/QML cross-distro issues, please contribute.
 
 ## Quick Start
 
-See [README.md](README.md) for full installation steps.
+See [README.md](../README.md) for build instructions (and known issues).
 
 ## What We're Actually Doing
 

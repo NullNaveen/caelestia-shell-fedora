@@ -1,26 +1,58 @@
-# Caelestia Shell on Fedora 43
+# Caelestia Shell on Fedora 43 (⚠️ EXPERIMENTAL - CURRENTLY BROKEN)
 
-A guide and helper scripts for building and installing the [Caelestia shell](https://github.com/caelestia-dots/shell) on Fedora 43.
+**STATUS: NOT WORKING** - This is an attempt to port the [Caelestia shell](https://github.com/caelestia-dots/shell) (designed for Arch Linux) to Fedora 43. The build completes but **the UI is broken** when running in Hyprland.
+
+## ⚠️ Current Issues
+
+- UI renders incorrectly / looks broken
+- Some features work, others don't
+- Cross-distro compatibility issues between Arch and Fedora
+- Possible Qt/QML version mismatches (Fedora uses Qt 6.10)
+- Path/configuration differences from Arch Linux
+
+**If you have ideas or suggestions to fix this, please open an issue or PR!**
 
 ## Credits
 
-- **Original Project**: [caelestia-dots/shell](https://github.com/caelestia-dots/shell) by [@soramame](https://github.com/caelestia-dots)
+- **Original Project**: [caelestia-dots/shell](https://github.com/caelestia-dots/shell) by [@soramame](https://github.com/caelestia-dots) - **designed for Arch Linux**
 - **Quickshell**: [outfoxxed/quickshell](https://git.outfoxxed.me/outfoxxed/quickshell) - the Qt6/QML-based Wayland compositor toolkit powering Caelestia
 - **Hyprland**: [hyprwm/Hyprland](https://github.com/hyprwm/Hyprland) - the dynamic tiling Wayland compositor
 
-This repository provides Fedora-specific build steps, dependency resolution, and automation to get Caelestia running on Fedora 43 since official packages aren't available in Fedora repos yet.
+This repository documents my attempt to build Caelestia on Fedora 43. While the components build successfully, the shell doesn't work properly yet.
 
-## What This Does
+## Understanding GNOME vs Hyprland
 
-The Caelestia shell is a modern, animated desktop environment for Wayland (Hyprland):
+### GNOME (What Fedora Ships With)
+- A **complete desktop environment** (like Windows or macOS)
+- Includes everything: window manager, panel, file manager, settings, applications
+- **Stable, polished, and fully supported** by Fedora
+- Years of refinement - everything "just works"
+- Default on Fedora because it's production-ready
+
+### Hyprland (What Caelestia Needs)
+- A **Wayland compositor only** - just the window/display manager
+- **NOT a complete desktop** - it's a foundation you build on
+- Requires separate components: panel, launcher, notifications, wallpaper, etc.
+- Designed for **advanced users** who want total customization
+- Cutting edge, less stable, requires configuration
+
+### Why This Matters
+Caelestia was built for **Arch Linux**, where package versions, paths, and configurations match what the developer tested. On **Fedora**, even though we can build all the components, there are compatibility issues with:
+- Qt/QML version differences
+- Runtime dependency mismatches  
+- Path/configuration differences
+- Theming/styling incompatibilities
+
+**This is why cross-distro desktop shells are challenging.**
+
+## What Caelestia Should Provide (When Working)
+
 - **Panels/bars**: Customizable top bar with workspaces, system tray, status icons
 - **Dashboard**: System info, media controls, calendar, weather
 - **Launcher**: Application launcher with fuzzy search, actions, wallpaper/scheme picker
 - **Lock screen**: Integrated session lock with PAM authentication
 - **Notifications**: Custom notification center with grouping and actions
 - **Control center**: Quick toggles for audio, network, Bluetooth, brightness
-
-Instead of using traditional desktop environments like GNOME or KDE, you get a tiling window manager experience with rich QML-based UI components.
 
 ## System Requirements
 
@@ -275,6 +307,37 @@ pkg-config --libs cava
 - **Clipboard History**: `sudo dnf install cliphist fuzzel` for clipboard manager
 - **Emoji Picker**: Included with `fuzzel`
 
+## Known Issues & Debugging
+
+### Current Problems
+1. **UI renders broken/incorrectly** - Components don't display properly
+2. **Some features work, others don't** - Inconsistent behavior
+3. **Visual glitches** - Layout issues, missing elements, styling problems
+
+### Possible Causes
+- **Qt version mismatch**: Fedora 43 uses Qt 6.10, Arch may use different version
+- **QML module compatibility**: Arch QML modules may not be compatible with Fedora's Qt
+- **Missing runtime dependencies**: Some libs/tools may be missing or different versions
+- **Configuration paths**: Hardcoded Arch-specific paths in the code
+- **Theme/style issues**: GTK/Qt theming differences between distros
+
+### Debug Steps
+```bash
+# Check QML errors when launching
+QT_LOGGING_RULES="*.debug=true" caelestia shell -d
+
+# Verify QML modules load
+QML2_IMPORT_PATH=/usr/local/lib64/qt6/qml qmlscene --verbose
+
+# Check Hyprland logs
+cat ~/.config/hypr/hyprland.log
+
+# Test Quickshell directly
+quickshell --verbose
+```
+
+**If you know how to fix these issues, please help!** Open an issue or PR with your findings.
+
 ## Uninstalling
 
 ```bash
@@ -300,11 +363,16 @@ sudo dnf remove hyprland hyprland-uwsm xdg-desktop-portal-hyprland
 
 ## Contributing
 
-This is a community build guide. Contributions welcome:
+**Help Wanted!** This is an experimental port that's currently broken. Looking for contributors who can help with:
+- Debugging Qt/QML compatibility issues between Arch and Fedora
+- Fixing visual rendering problems
+- Identifying missing or incompatible dependencies
+- Creating patches for Fedora-specific paths/configurations
+- Testing on different Fedora versions
 - Automation scripts (single install script)
-- RPM spec files for Fedora packaging
-- Build fixes for newer Fedora versions
-- Documentation improvements
+- RPM spec files for proper Fedora packaging
+
+**Open an issue or PR if you have ideas!**
 
 ## License
 
