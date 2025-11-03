@@ -21,6 +21,13 @@ If you try to run it on GNOME, you'll see errors like:
 Follow the [Installation](#installation) section below.
 
 ### If You Already Built It
+
+**First, verify your setup:**
+```bash
+~/Projects/caelestia-shell-fedora/check-setup.sh
+```
+
+If all checks pass:
 1. **Log out** from your current session
 2. At the GDM login screen, **click the gear icon** (bottom right)
 3. Select **"Hyprland"**
