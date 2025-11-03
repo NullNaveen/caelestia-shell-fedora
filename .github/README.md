@@ -1,28 +1,31 @@
-# Caelestia Shell - Fedora 43 Attempt (⚠️ BROKEN)
+# Caelestia Shell - Fedora 43 Build Guide
 
-**STATUS: EXPERIMENTAL - NOT WORKING**
-
-Attempt to build the Caelestia desktop shell (designed for Arch Linux) on Fedora 43. Build completes, but **the UI is broken** when running.
+Complete build and installation guide for running the Caelestia desktop shell on Fedora 43 with Hyprland.
 
 ## What is this?
 
-[Caelestia](https://github.com/caelestia-dots/shell) is a beautiful, animated desktop environment built with Quickshell (Qt6/QML) for Hyprland. **It was designed for Arch Linux.**
+[Caelestia](https://github.com/caelestia-dots/shell) is a beautiful, animated desktop environment built with Quickshell (Qt6/QML) for Hyprland. Originally designed for Arch Linux, this repo provides **Fedora-specific instructions** to build and run it on Fedora 43.
 
-This repo documents my attempt to port it to Fedora 43. The build process succeeds, but the shell has severe UI issues - rendering is broken, features don't work correctly, and the experience is unusable.
+**⚠️ Important**: Caelestia requires Hyprland compositor. It will NOT work on GNOME.
 
-**Credit**: All UI/shell code belongs to the [Caelestia project](https://github.com/caelestia-dots) by [@soramame](https://github.com/caelestia-dots). This is purely a Fedora porting attempt.
-
-## Current Status
-
-❌ **UI broken** - Components don't render properly  
-❌ **Inconsistent behavior** - Some features work, others don't  
-❌ **Visual glitches** - Layout issues, styling problems  
-
-**Looking for help!** If you know how to debug Qt/QML cross-distro issues, please contribute.
+**Credit**: All UI/shell code belongs to the [Caelestia project](https://github.com/caelestia-dots) by [@soramame](https://github.com/caelestia-dots). This repo provides Fedora build instructions and helper scripts.
 
 ## Quick Start
 
-See [README.md](../README.md) for build instructions (and known issues).
+See [README.md](../README.md) for complete installation instructions.
+
+**Already built it?** 
+1. Log out from GNOME
+2. Select "Hyprland" at login screen
+3. Log in - Caelestia will auto-start
+
+## What's Included
+
+- **Complete build guide** - Step-by-step instructions for Fedora 43
+- **Source code** - Full Caelestia shell QML source in `caelestia-source/`
+- **Helper scripts** - Test script for verifying Hyprland setup
+- **Documentation** - Technical analysis and Hyprland beginner's guide
+- **Troubleshooting** - Common issues and solutions
 
 ## What We're Actually Doing
 
